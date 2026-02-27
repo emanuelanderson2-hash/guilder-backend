@@ -114,7 +114,9 @@ if (!adminExists) {
 async function startServer() {
   const app = express();
   app.use(express.json({ limit: '10mb' }));
-
+app.get("/healthz", (req, res) => {
+  res.json({ status: "ok" });
+});
   // Auth Middleware
   const authenticateToken = (req: any, res: any, next: any) => {
     const authHeader = req.headers['authorization'];
