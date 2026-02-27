@@ -35,7 +35,7 @@ export default function Catalog() {
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('/api/products', newProduct);
+      await api.post('/api/products', newProduct);
       setShowAddModal(false);
       fetchProducts();
       setNewProduct({

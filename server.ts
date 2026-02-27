@@ -12,7 +12,13 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const db = new Database("/data/guilder.db");
+const isProduction = process.env.NODE_ENV === "production";
+
+const dbPath = isProduction
+  ? "/data/guilder.db"
+  : "guilder.db";
+
+const db = new Database(dbPath);
 const JWT_SECRET = process.env.JWT_SECRET || "guilder_secret_key_2024";
 
 // Initialize Database

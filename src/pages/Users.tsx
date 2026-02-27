@@ -29,7 +29,7 @@ export default function UsersPage() {
   const handleAddUser = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('/api/users', newUser);
+      await api.post('/api/users', newUser);
       setShowAddModal(false);
       fetchUsers();
       setNewUser({ name: '', email: '', role: 'client', access_code: '' });

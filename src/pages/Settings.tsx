@@ -27,7 +27,7 @@ export default function Settings() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('/api/settings', { pix_key: pixKey, pix_name: pixName });
+      await api.post('/api/settings', { pix_key: pixKey, pix_name: pixName });
       setMessage('Configurações salvas com sucesso!');
       setTimeout(() => setMessage(''), 3000);
     } catch (err) {

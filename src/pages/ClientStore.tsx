@@ -82,7 +82,7 @@ export default function ClientStore() {
     const fullAddress = `${address.street}, ${address.number} - ${address.neighborhood}${address.complement ? ` (${address.complement})` : ''}`;
 
     try {
-      const res = await axios.post('/api/orders', { 
+      const res = await api.post('/api/orders', { 
         items: cart, 
         total_price: total,
         address: fullAddress,

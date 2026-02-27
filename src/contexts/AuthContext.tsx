@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from "../api";
 
 interface User {
   id: number;
@@ -45,7 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [token]);
 
   const login = async (credentials: { name?: string; password?: string; accessCode?: string }) => {
-    const response = await axios.post('/api/auth/login', credentials);
+    const response = api.post("/api/auth/login", credentials)
     const { token: newToken, user: newUser } = response.data;
     setToken(newToken);
     setUser(newUser);

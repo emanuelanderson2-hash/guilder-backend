@@ -66,7 +66,7 @@ export default function Chat() {
 
     setIsSending(true);
     try {
-      await axios.post('/api/messages', {
+      await api.post('/api/messages', {
         order_id: selectedChat.order_id,
         content: newMessage,
         image_url: imagePreview
