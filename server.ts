@@ -375,12 +375,15 @@ app.get("/healthz", (req, res) => {
       appType: "spa",
     });
     app.use(vite.middlewares);
-  } else {
-    app.use(express.static(path.join(__dirname, "dist")));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "dist", "index.html"));
-    });
-  }
+} else {
+  const clientPath = __dirname; // já estamos dentro da pasta dist
+
+  app.use(express.static(clientPath));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(clientPath, "index.html"));
+  });
+}
 
   const PORT = Number(process.env.PORT) || 3000;
 app.listen(PORT, '0.0.0.0', () => {
